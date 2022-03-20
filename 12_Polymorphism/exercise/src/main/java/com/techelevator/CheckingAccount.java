@@ -1,6 +1,8 @@
 package com.techelevator;
 
 public class CheckingAccount extends BankAccount {
+    private int checkingBalance;
+    private CheckingAccount s;
 
     public CheckingAccount(String accountHolder, String accountNumber, int balance) {
         super(accountHolder, accountNumber, balance);
@@ -9,6 +11,31 @@ public class CheckingAccount extends BankAccount {
     public CheckingAccount(String accountHolder, String accountNumber) {
         super(accountHolder, accountNumber);
     }
+
+    public int getBalance(){
+        return super.getBalance();
+    }
+
+
+
+    public int transferTo(SavingsAccount destinationAcccount, int transferAmount){
+     checkingBalance = super.transferTo(destinationAcccount,transferAmount);
+
+     return checkingBalance;
+
+    }
+
+
+/*
+    public int transferTo(SavingsAccount destinationAcccount, int transferAmount){
+        checkingBalance = destinationAcccount.deposit(transferAmount);
+        super.withdraw(transferAmount);
+        return checkingBalance;
+
+    }
+
+*/
+
 
     @Override
     public int withdraw(int amountToWithdraw) {
@@ -23,4 +50,6 @@ public class CheckingAccount extends BankAccount {
         }
         return getBalance();
     }
+
+
 }
