@@ -27,6 +27,32 @@ public class BookReader {
         /*
         Step 2: Step Two: Open the book file and handle errors
          */
+        File bookFile = new File(filePath);//tutorial/data/fairy-tales.txt
+
+        int lineCount = 0;
+        boolean inBookText = false;
+        try(Scanner fileInput = new Scanner(bookFile)){
+            while(fileInput.hasNext()) {
+                String lineOfText = fileInput.nextLine();
+                if (lineOfText.startsWith(BEGIN_MARKER)) {
+                    inBookText = true;
+                    continue;
+                }
+                    if (inBookText) {
+                        lineCount++;
+                        System.out.println(lineCount + ": " + lineOfText);
+                    }
+
+                }
+            }
+
+        catch(FileNotFoundException e){
+            System.out.println("File not found: " + bookFile.getAbsolutePath());
+        }
+
+        System.out.println("Found " + lineCount + " lines of text in " + filePath);
+
+
 
     }
 }
